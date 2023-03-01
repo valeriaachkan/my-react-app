@@ -5,6 +5,8 @@ import data from './data.json';
 import Container from './components/Container/Container';
 import FriendList from './components/FriendList/FriendList';
 import friends from './friends.json';
+import TransactionHistory from './components/TransactionHistory/TransactionHistory';
+import transactions from './transactions.json';
 
 export default function App() {
 	return (
@@ -18,6 +20,7 @@ export default function App() {
 			/>
 			<Statistics items={data} />
 			<FriendList friends={friends} />
+			<TransactionHistory transactions={transactions} />
 		</>
 	);
 }
