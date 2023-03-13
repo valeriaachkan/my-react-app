@@ -1,3 +1,4 @@
+import React from 'react';
 import Item from './Item';
 import s from './Statistics.module.css';
 
