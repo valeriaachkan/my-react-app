@@ -1,0 +1,36 @@
+.section {
+    padding: 20px 15px;
+}
+
+.list {
+    display: flex;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.button {
+    padding: 3px 10px;
+    outline: 0;
+    background-color: #F5F4FA;
+    border: 0;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.stats {
+    flex-direction: column;
+}
+
+.value {
+    margin-left: 10px;
+    font-weight: bold;
+}
