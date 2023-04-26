@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import s from './FeedbackApp.module.css';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
@@ -28,4 +29,11 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
 	);
 };
 
+Statistics.propTypes = {
+	good: propTypes.number,
+	neutral: propTypes.number,
+	bad: propTypes.number,
+	total: propTypes.number,
+	positivePercentage: propTypes.number,
+};
 export default Statistics;

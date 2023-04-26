@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import Section from './Section';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
@@ -33,6 +34,16 @@ const FeedbackApp = ({
 			</Section>
 		</>
 	);
+};
+
+FeedbackApp.propTypes = {
+	options: propTypes.arrayOf(propTypes.string),
+	onLeaveFeedback: propTypes.func,
+	good: propTypes.number,
+	neutral: propTypes.number,
+	bad: propTypes.number,
+	total: propTypes.number,
+	positivePercentage: propTypes.number,
 };
 
 export default FeedbackApp;

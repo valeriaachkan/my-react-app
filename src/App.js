@@ -1,50 +1,56 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import FeedbackApp from './components/FeedbackApp';
 
-class App extends Component {
-	state = {
-		good: 0,
-		neutral: 0,
-		bad: 0,
+function App() {
+	const [good, setGood] = useState(0);
+	const [neutral, setNeutral] = useState(0);
+	const [bad, setBad] = useState(0);
+
+	const options = { good, neutral, bad };
+
+	const handleFeedback = (option) => {
+		switch (option) {
+			case 'good':
+				setGood((s) => s + 1);
+				break;
+
+			case 'neutral':
+				setNeutral((s) => s + 1);
+				break;
+			case 'bad':
+				setBad((s) => s + 1);
+				break;
+
+			default:
+				return;
+		}
 	};
 
-	handleFeedback = (option) => {
-		this.setState((prevState) => {
-			return { [option]: prevState[option] + 1 };
-		});
-	};
-
-	countTotalFedback = () => {
-		const values = Object.values(this.state);
+	const countTotalFedback = () => {
+		const values = Object.values(options);
 		const total = values.reduce((acc, el) => acc + el, 0);
 		return total;
 	};
 
-	countPositivePercentage = () => {
-		const totalFeedback = this.countTotalFedback();
-		const positivePercentage = (this.state.good / totalFeedback) * 100;
+	const countPositivePercentage = () => {
+		const totalFeedback = countTotalFedback();
+		const positivePercentage = (good / totalFeedback) * 100;
 		return Math.round(positivePercentage) || 0;
 	};
 
-	render() {
-		const { good, neutral, bad } = this.state;
-		const { handleFeedback } = this;
-		const feedbackOptions = Object.keys(this.state);
-		const totalFeedback = this.countTotalFedback();
-		const positivePercentage = this.countPositivePercentage();
+	const feedbackOptions = Object.keys(options);
 
-		return (
-			<FeedbackApp
-				options={feedbackOptions}
-				onLeaveFeedback={handleFeedback}
-				good={good}
-				neutral={neutral}
-				bad={bad}
-				total={totalFeedback}
-				positivePercentage={positivePercentage}
-			/>
-		);
-	}
+	return (
+		<FeedbackApp
+			options={feedbackOptions}
+			onLeaveFeedback={handleFeedback}
+			good={good}
+			neutral={neutral}
+			bad={bad}
+			total={countTotalFedback()}
+			positivePercentage={countPositivePercentage()}
+		/>
+	);
 }
 
 export default App;

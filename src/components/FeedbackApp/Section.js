@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import s from './FeedbackApp.module.css';
 
 const Section = ({ title, children }) => {
@@ -8,6 +9,10 @@ const Section = ({ title, children }) => {
 			{children}
 		</section>
 	);
+};
+
+Section.propTypes = {
+	title: propTypes.string,
 };
 
 export default Section;
